@@ -1,4 +1,9 @@
-import * as firebase from 'firebase';
+ import * as firebase from 'firebase';
+
+
+
+
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyBrGnomoDTn_pHCUVuDLfUO2MF2CvF6kpk",
@@ -15,9 +20,25 @@ var firebaseConfig = {
 
   appId: "1:297392938587:web:ad1b64c410eed7b727e97e"
 
+};
+
+      var fireDB=firebase.initializeApp(firebaseConfig);
+
+export default fireDB.database().ref();
+
+/*
+var firebaseConfig = {
+  apiKey: "AIzaSyDHu93JO2hFyiG3a_4P96iqfSgwtYIpA0s",
+  authDomain: "firstweb-69eee.firebaseapp.com",
+  databaseURL: "https://firstweb-69eee-default-rtdb.firebaseio.com",
+  projectId: "firstweb-69eee",
+  storageBucket: "firstweb-69eee.appspot.com",
+  messagingSenderId: "385432753716",
+  appId: "1:385432753716:web:1e14bddaefdc00a3089c61"
+
+
   };
-  // Initialize Firebase se hizo la luz 
-  https://console.firebase.google.com/project/se-hizo-la-luz/settings/general/web:YjQwYTAwODItOGFlOC00OWQ2LWIyNjgtN2M2NzU1ZmNjY2Fj?hl=es
+
   var fireDB=firebase.initializeApp(firebaseConfig);
 
-  export default fireDB.database().ref();
+export default fireDB.database().ref(); */
