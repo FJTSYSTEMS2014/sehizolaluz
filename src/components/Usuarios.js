@@ -62,7 +62,7 @@ class App extends Component {
         [e.target.name]: e.target.value
       }
     })
-    console.log(this.state.form);
+   // console.log(this.state.form);
   }
 
   seleccionarNombre = async (nombre, id, caso) => {
@@ -82,7 +82,7 @@ class App extends Component {
     return (
       <div className="App">
         <br />
-        <button className="btn btn-success" onClick={() => this.setState({ modalInsertar: true })}>Crear Nuevo Usuario</button>
+        <button className="btn btn-success btn-block" onClick={() => this.setState({ modalInsertar: true })}>Crear Nuevo Usuario</button>
         <br />
         <br />
 
@@ -121,7 +121,8 @@ class App extends Component {
         <Modal isOpen={this.state.modalInsertar}>
           <ModalHeader>Registrar Nuevo Usuario</ModalHeader>
           <ModalBody>
-            <div className="form-group ">
+                <div className=" p-3 justify-content-center">
+            
               <label>Nombre: </label>
               <br />
               <input type="text" className="form-control" name="nombre" onChange={this.handleChange} />
@@ -145,8 +146,8 @@ class App extends Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className="btn btn-primary" onClick={() => this.peticionPost()}>Guardar</button>{"   "}
-            <button className="btn btn-danger" onClick={() => this.setState({ modalInsertar: false })}>Cancelar</button>
+            <button className=" container-fluid h-100 btn btn-primary" onClick={() => this.peticionPost()}>Guardar</button>{"   "}
+            <button className=" container-fluid h-100 btn btn-danger" onClick={() => this.setState({ modalInsertar: false })}>Cancelar</button>
           </ModalFooter>
         </Modal>
 
@@ -155,7 +156,7 @@ class App extends Component {
         <Modal isOpen={this.state.modalEditar}>
           <ModalHeader>Editar Registro</ModalHeader>
           <ModalBody>
-            <div className="form-group">
+            <div className="p-3 justify-content-center">
               <label>Nombre: </label>
               <br />
               <input type="text" className="form-control" name="nombre" onChange={this.handleChange} value={this.state.form && this.state.form.nombre} />
@@ -182,8 +183,8 @@ class App extends Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className="btn btn-primary" onClick={() => this.peticionPut()}>Guardar</button>{"   "}
-            <button className="btn btn-danger" onClick={() => this.setState({ modalEditar: false })}>Cancelar</button>
+            <button className=" container-fluid h-100 btn btn-primary" onClick={() => this.peticionPut()}>Guardar</button>{"   "}
+            <button className=" container-fluid h-100 btn btn-danger" onClick={() => this.setState({ modalEditar: false })}>Cancelar</button>
           </ModalFooter>
         </Modal>
 

@@ -22,7 +22,7 @@ class App2 extends Component {
     firebase.child("luz").on("value", (luz) => {
       if (luz.val() !== null) {
         this.setState({ ...this.state.data, data: luz.val() });
-        console.log({ ...this.state.data, data: luz.val() });
+        //console.log({ ...this.state.data, data: luz.val() });
       } else {
         this.setState({ data: [] });
         

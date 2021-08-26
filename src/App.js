@@ -10,11 +10,11 @@ function App() {
 
 
     return (
-        <div className="text-center">
+        <div className=" d-inflex justify-content-center  text-center">
 
-            {(estado === "undefined") && (<div><img className="img-fluid" src={img} /><h1><strong>Se hizo la Luz</strong></h1></div>)}
+            {(estado === "undefined") && (<div><img className="img-fluid" src={img} /><h1 className="display-4">Se hizo la Luz</h1></div>)}
             <br></br>
-
+        
             <br></br>
             <button onClick={() => {
                 setEstado("user");
