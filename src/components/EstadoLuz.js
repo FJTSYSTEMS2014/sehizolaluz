@@ -1,9 +1,10 @@
 
 import React, { Component } from "react";
-import firebase from "../Services/firebase";
+import fireDB from "../Services/firebase";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import imgOFF from '../img/off.png';
 import imgON from '../img/on.png';
+const firebase = fireDB.database().ref();
 
 class App2 extends Component {
   state = {
@@ -11,21 +12,21 @@ class App2 extends Component {
     modalInsertar: false,
     modalEditar: false,
     form: {
-      luz: '',
+      luz: false,
       fecha: `${Date()}`,
     },
     id: 0
   };
 
   peticionGet = () => {
-    
+
     firebase.child("luz").on("value", (luz) => {
       if (luz.val() !== null) {
         this.setState({ ...this.state.data, data: luz.val() });
         //console.log({ ...this.state.data, data: luz.val() });
       } else {
         this.setState({ data: [] });
-        
+
       }
     });
   };
@@ -64,13 +65,13 @@ class App2 extends Component {
         [e.target.name]: e.target.value
       }
     })
-   
+
   }
 
   seleccionarluz = async (luz, id, caso) => {
-   
+
     await this.setState({ form: luz, id: id });
-    
+
     (caso === "Editar") ? this.setState({ modalEditar: true }) :
       this.peticionDelete()
 
@@ -82,9 +83,9 @@ class App2 extends Component {
 
   render() {
     return (
-      <div className="App2">
+      <div className=" ">
         <br />
-      
+
         <br />
         <br />
 
@@ -97,13 +98,13 @@ class App2 extends Component {
             </tr>
           </thead>
           <tbody>
-             
+
             {Object.keys(this.state.data).map(i => {
               // console.log(i); 
               return <tr key={i}>
                 <td>{this.state.data[i].luz}</td>
                 <td>{this.state.data[i].fecha}</td>
-          
+
                 <td>
                   <button className="btn btn-primary" onClick={() => this.seleccionarluz(this.state.data[i], i, 'Editar')}>Cambiar Estado de la luz</button> {"   "}
                 </td>
@@ -140,18 +141,18 @@ class App2 extends Component {
           <ModalHeader>Editar Registro</ModalHeader>
           <ModalBody>
             <div className="form-group">
-            <label>Estado Luz: </label>
+              <label>Estado Luz: </label>
               <br />
-            <select type="text" className="form-control" name="luz" onChange={this.handleChange} value={this.state.form && this.state.form.luz} >
-                <option value="off">Apagar</option>
-                <option value="on" selected>Encender</option>
+              <select type="text" className="form-control" name="luz" onChange={this.handleChange} value={this.state.form && this.state.form.luz} >
+                <option value={false}>Apagar</option>
+                <option value={true} selected>Encender</option>
               </select>
               <br />
               <label>Fecha de Modificacion: </label>
               <br />
-              <input type="text" className="form-control" name="fecha" onChange={this.handleChange} value={this.state.form && (this.state.form.fecha=Date())} />
+              <input type="text" className="form-control" name="fecha" onChange={this.handleChange} value={this.state.form && (this.state.form.fecha = Date())} />
               <br />
-        
+
 
             </div>
           </ModalBody>
@@ -160,13 +161,13 @@ class App2 extends Component {
             <button className="btn btn-danger" onClick={() => this.setState({ modalEditar: false })}>Cancelar</button>
           </ModalFooter>
         </Modal>
-    <div className="btn-primary">
-  
-    </div>
-    <ModalBody>
-    {(this.state.form.luz === "on") && (<img className="img-fluid" src={imgON} />)}
-    {(this.state.form.luz === "off") && (<img className="img-fluid" src={imgOFF} />)}
-    </ModalBody>
+        <div className="btn-primary">
+
+        </div>
+        <ModalBody>
+          {(this.state.form.luz === true) && (<img className="img-fluid" src={imgON} />)}
+          {(this.state.form.luz === false) && (<img className="img-fluid" src={imgOFF} />)}
+        </ModalBody>
       </div>
     );
   }

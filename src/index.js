@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './login/Login/Login';
+import App from './Auth/Auth';
+//import App from './loginadmin/FormularioLogin';
+//import App from './login/Login/Crear_Usuarios';
 import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.min.css";
 

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 //import logo from "./logo.svg";
 //import "./App.css";
-import firebase from "../Services/firebase";
-import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import fireDB from "../Services/firebase";
 
+import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+const firebase=fireDB.database().ref();
 
 class App extends Component {
   state = {
