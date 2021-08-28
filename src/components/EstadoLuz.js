@@ -4,7 +4,9 @@ import fireDB from "../Services/firebase";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import imgOFF from '../img/off.png';
 import imgON from '../img/on.png';
+import { format } from 'date-fns';
 const firebase = fireDB.database().ref();
+
 
 class App2 extends Component {
   state = {
@@ -12,11 +14,13 @@ class App2 extends Component {
     modalInsertar: false,
     modalEditar: false,
     form: {
-      luz: false,
-      fecha: `${Date()}`,
+      luz: '',
+      fecha: '',
     },
     id: 0
   };
+
+
 
   peticionGet = () => {
 
@@ -143,6 +147,7 @@ class App2 extends Component {
             <div className="form-group">
               <label>Estado Luz: </label>
               <br />
+              
               <select type="text" className="form-control" name="luz" onChange={this.handleChange} value={this.state.form && this.state.form.luz} >
                 <option value={false}>Apagar</option>
                 <option value={true} selected>Encender</option>
@@ -150,27 +155,31 @@ class App2 extends Component {
               <br />
               <label>Fecha de Modificacion: </label>
               <br />
-              <input type="text" className="form-control" name="fecha" onChange={this.handleChange} value={this.state.form && (this.state.form.fecha = Date())} />
+              <input type="text" className="form-control" name="fecha" onChange={this.handleChange} value={this.state.form && (this.state.form.fecha = format(new Date(), 'yyyy/MM/dd kk:mm:ss'))} />
               <br />
 
 
             </div>
           </ModalBody>
+          
+     
           <ModalFooter>
             <button className="btn btn-success" onClick={() => this.peticionPut()}>Cambiar</button>{"   "}
             <button className="btn btn-danger" onClick={() => this.setState({ modalEditar: false })}>Cancelar</button>
+            {(this.state.form.luz === 'true') && (<img className="img-fluid" src={imgON} />)}
+          {(this.state.form.luz === 'false') && (<img className="img-fluid" src={imgOFF} />)}
           </ModalFooter>
         </Modal>
         <div className="btn-primary">
-
+ 
         </div>
-        <ModalBody>
-          {(this.state.form.luz === true) && (<img className="img-fluid" src={imgON} />)}
-          {(this.state.form.luz === false) && (<img className="img-fluid" src={imgOFF} />)}
-        </ModalBody>
+
+
+
       </div>
     );
   }
 }
 
 export default App2;
+

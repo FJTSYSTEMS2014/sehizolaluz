@@ -79,6 +79,8 @@ class App extends Component {
     this.peticionGet();
   }
 
+
+  
   render() {
     return (
       <div className="App">

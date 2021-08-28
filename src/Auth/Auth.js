@@ -72,7 +72,7 @@ export default (props) => {
       
       {user && <button className="btn btn-warning btn-block"onClick={logout}> Cerrar Sesion</button> }
       {user&&<h2>Bienvenid@<span>{user.username}</span></h2>}
-      {user&&<App/>}
+      {user&&<App/>} <br></br>
     </div>
     
   );
